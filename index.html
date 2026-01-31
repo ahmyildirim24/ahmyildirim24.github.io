@@ -3,29 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AEY Dev Studio - Modern mobil uygulamalar geliştiriyoruz">
-    <title>AEY Dev Studio - Mobil Uygulama Geliştirme</title>
+    <meta name="description" content="AEY Dev Studio - Geleceği Kodluyoruz">
+    <title>AEY Dev Studio | Digital Avant-Garde</title>
     
-    <!-- Google Fonts -->
+    <!-- Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Stylesheet -->
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
     
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 </head>
 <body>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="/" class="logo">AEY Dev Studio</a>
+            <a href="/" class="logo">AEY <span>.Dev</span></a>
             <nav>
                 <ul class="nav">
-                    <li><a href="#apps">Uygulamalar</a></li>
-                    <li><a href="#about">Hakkımızda</a></li>
+                    <li><a href="#apps">Portfolyo</a></li>
+                    <li><a href="#about">Vizyon</a></li>
                     <li><a href="#contact">İletişim</a></li>
                 </ul>
             </nav>
@@ -35,72 +35,76 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Modern Mobil Uygulamalar</h1>
-            <p>Kullanıcı deneyimini ön planda tutan, yenilikçi mobil uygulamalar geliştiriyoruz.</p>
+            <div class="hero-content">
+                <h1>Dijital Evreni <br><span>Yeniden Tasarla</span></h1>
+                <p>Kullanıcı deneyimini sanatla buluşturan, sınırları zorlayan mobil teknolojiler.</p>
+                <a href="#apps" class="btn">Keşfetmeye Başla</a>
+            </div>
         </div>
+        <div class="scroll-indicator"></div>
     </section>
 
-    <!-- Apps Section -->
+    <!-- Apps/Portfolio Section -->
     <section class="section" id="apps">
         <div class="container">
-            <div class="section-title">
-                <h2>Uygulamalarımız</h2>
-                <p>Hayatı kolaylaştıran mobil çözümlerimizi keşfedin</p>
-            </div>
-            
+            <h2>Projelerimiz</h2>
             <div class="apps-grid">
-                <!-- Where2Go App Card -->
+                <!-- Where2Go Card -->
                 <div class="app-card">
+                    <span class="app-number">01</span>
                     <h3>Where2Go</h3>
-                    <p>Kullanıcılar için istedikleri tarihte istedikleri şehir için seçimlerine göre akıllı rota oluşturan mobil uygulama. Seyahatlerinizi daha kolay ve eğlenceli hale getirin.</p>
-                    <a href="where2go/index.html" class="btn">Daha Fazla Bilgi</a>
+                    <p>Akıllı seyahat asistanınız. Sadece tarih ve şehri seçin, gerisini yapay zekaya bırakın. Kişiselleştirilmiş rotalar ve keşif noktaları.</p>
+                    <a href="where2go/index.html" class="btn btn-secondary">İncele</a>
                 </div>
-                
-                <!-- Placeholder for future apps -->
-                <div class="app-card" style="opacity: 0.6;">
-                    <h3>Yakında</h3>
-                    <p>Yeni uygulamamız üzerinde çalışıyoruz. Haberdar olmak için bizi takip edin.</p>
-                    <a href="#" class="btn btn-secondary">Çok Yakında</a>
+
+                <!-- Coming Soon Card -->
+                <div class="app-card" style="opacity: 0.5;">
+                    <span class="app-number">02</span>
+                    <h3>Gizli Proje</h3>
+                    <p>Henüz duyurulmadı. Geleceği inşa ediyoruz.</p>
+                    <button class="btn btn-secondary" disabled>Çok Yakında</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section" id="about" style="background-color: var(--bg-white);">
+    <!-- About Content (Refined) -->
+    <section class="section" id="about">
         <div class="container">
-            <div class="section-title">
+            <div style="max-width: 800px;">
                 <h2>Hakkımızda</h2>
-                <p>Teknoloji ve tasarımı bir araya getiriyoruz</p>
-            </div>
-            
-            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 1.125rem; margin-bottom: 2rem;">
-                    AEY Dev Studio olarak, kullanıcı odaklı ve yenilikçi mobil uygulamalar geliştiriyoruz. 
-                    Amacımız, insanların günlük hayatını kolaylaştıran ve onlara değer katan çözümler sunmak.
+                <p>
+                    AEY Dev Studio, kod satırlarının ötesine geçerek deneyimler tasarlar. 
+                    Sıradan olana meydan okuyor, teknolojiyi estetikle harmanlıyoruz. 
+                    Amacımız sadece "çalışan" uygulamalar değil, "ilham veren" dijital eserler bırakmak.
                 </p>
-                <p style="font-size: 1.125rem;">
-                    Modern teknolojiler kullanarak, kullanıcı deneyimini ön planda tutan uygulamalar tasarlıyoruz.
-                </p>
+                <div style="margin-top: 3rem; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    <div>
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem">İnovasyon</h4>
+                        <p style="font-size: 1rem">En yeni teknolojilerle sınırları zorluyoruz.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--secondary); margin-bottom: 0.5rem">Estetik</h4>
+                        <p style="font-size: 1rem">Göz alıcı ve akıcı arayüzler.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: white; margin-bottom: 0.5rem">Odak</h4>
+                        <p style="font-size: 1rem">Kullanıcı merkezli çözüm mimarisi.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="section" id="contact">
+    <section class="section" id="contact" style="padding-bottom: 0;">
         <div class="container">
-            <div class="section-title">
+            <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(45, 212, 191, 0.05)); padding: 4rem; border-radius: 20px; border: 1px solid var(--border-subtle);">
                 <h2>İletişim</h2>
-                <p>Bizimle iletişime geçin</p>
-            </div>
-            
-            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 1.125rem; margin-bottom: 1.5rem;">
-                    Sorularınız, önerileriniz veya iş birlikleri için bizimle iletişime geçebilirsiniz.
-                </p>
-                <p style="font-size: 1.125rem;">
-                    <strong>E-posta:</strong> <a href="mailto:info@aeydevstudio.me">info@aeydevstudio.me</a>
-                </p>
+                <p>Bir fikriniz mi var? Geleceği birlikte konuşalım.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="mailto:info@aeydevstudio.me" class="btn">info@aeydevstudio.me</a>
+                </div>
             </div>
         </div>
     </section>
@@ -109,28 +113,38 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-brand">
                     <h4>AEY Dev Studio</h4>
-                    <p>Modern mobil uygulamalar geliştiriyoruz.</p>
+                    <p>Estetik. Teknoloji. Gelecek.</p>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Uygulamalar</h4>
-                    <a href="where2go/index.html">Where2Go</a>
+                    <h5>Navigasyon</h5>
+                    <a href="#apps">Projeler</a>
+                    <a href="#about">Hakkımızda</a>
+                    <a href="#contact">İletişim</a>
                 </div>
-                
+
                 <div class="footer-section">
-                    <h4>Yasal</h4>
-                    <a href="where2go/privacy.html">Gizlilik Politikası</a>
-                    <a href="where2go/kvkk.html">KVKK Aydınlatma Metni</a>
+                    <h5>Yasal</h5>
                     <a href="where2go/terms.html">Kullanım Şartları</a>
+                    <a href="where2go/privacy.html">Gizlilik Politikası</a>
+                    <a href="where2go/kvkk.html">KVKK</a>
+                </div>
+
+                <div class="footer-section">
+                    <h5>Sosyal</h5>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#" target="_blank">GitHub</a>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 AEY Dev Studio. Tüm hakları saklıdır.</p>
+                <p>&copy; 2026 AEY Dev Studio. Tüm hakları saklıdır.</p>
+                <p>Designed by AEY Intelligence</p>
             </div>
         </div>
     </footer>
+
 </body>
 </html>

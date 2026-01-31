@@ -1,118 +1,94 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Where2Go - Akıllı seyahat rota planlama uygulaması">
-    <title>Where2Go - Akıllı Seyahat Rotası</title>
-    
-    <!-- Google Fonts -->
+    <meta name="description" content="Where2Go - Akıllı Seyahat Asistanı">
+    <title>Where2Go | Next-Gen Travel</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Stylesheet -->
+
+    <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
-    
+
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗺️</text></svg>">
 </head>
+
 <body>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="../" class="logo">AEY Dev Studio</a>
+            <a href="../index.html" class="logo">AEY <span>.Dev</span></a>
             <nav>
                 <ul class="nav">
-                    <li><a href="../#apps">Uygulamalar</a></li>
-                    <li><a href="../#about">Hakkımızda</a></li>
-                    <li><a href="../#contact">İletişim</a></li>
+                    <li><a href="../index.html#apps">Geri Dön</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Breadcrumb -->
-    <div class="container">
-        <div class="breadcrumb">
-            <a href="../">Ana Sayfa</a> / Where2Go
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- App Hero -->
+    <section class="hero" style="min-height: 80vh;">
         <div class="container">
-            <h1>🗺️ Where2Go</h1>
-            <p>Akıllı Seyahat Rota Planlama Asistanınız</p>
-        </div>
-    </section>
-
-    <!-- App Description Section -->
-    <section class="section">
-        <div class="container">
-            <div class="legal-page">
-                <h2>Uygulama Hakkında</h2>
-                <p style="font-size: 1.125rem;">
-                    Where2Go, kullanıcılar için istedikleri tarihte istedikleri şehir için seçimlerine göre 
-                    akıllı rota oluşturan bir mobil uygulamadır. Seyahatlerinizi planlamayı kolaylaştırır ve 
-                    size özel rotalar oluşturur.
-                </p>
-
-                <h3>Özellikler</h3>
-                <ul class="features-list">
-                    <li>Akıllı Rota Planlama - Tercihlerinize göre optimize edilmiş rotalar</li>
-                    <li>Tarih ve Şehir Seçimi - İstediğiniz zaman, istediğiniz şehir</li>
-                    <li>Kişiselleştirilmiş Öneriler - Size özel gezilecek yerler</li>
-                    <li>Zaman Optimizasyonu - Zamanınızı en verimli şekilde kullanın</li>
-                    <li>Detaylı Konum Bilgileri - Her mekan için kapsamlı bilgiler</li>
-                    <li>Offline Erişim - İnternetsiz de rotalarınıza ulaşın</li>
-                    <li>Kullanıcı Dostu Arayüz - Kolay ve hızlı kullanım</li>
-                    <li>Çoklu Dil Desteği - Türkçe ve İngilizce</li>
-                </ul>
-
-                <h3>Nasıl Çalışır?</h3>
-                <ol style="list-style: decimal; margin-left: 2rem;">
-                    <li style="margin-bottom: 0.5rem;">Gitmek istediğiniz şehri seçin</li>
-                    <li style="margin-bottom: 0.5rem;">Seyahat tarihlerinizi belirleyin</li>
-                    <li style="margin-bottom: 0.5rem;">İlgi alanlarınızı ve tercihlerinizi seçin</li>
-                    <li style="margin-bottom: 0.5rem;">Uygulama sizin için en uygun rotayı oluştursun</li>
-                    <li style="margin-bottom: 0.5rem;">Rotanızı takip edin ve keyfini çıkarın!</li>
-                </ol>
-
-                <h3>İndir</h3>
-                <p>Uygulamayı şimdi indirerek seyahatlerinizi daha keyifli hale getirin!</p>
-                
-                <!-- Play Store Badge -->
-                <div class="play-store-badge">
-                    <a href="#" target="_blank" rel="noopener">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png" 
-                             alt="Google Play'den indirin"
-                             style="height: 80px;">
-                    </a>
+            <div class="hero-content">
+                <span
+                    style="color: var(--secondary); font-family: 'Syne', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 1rem;">Travel
+                    Intelligence</span>
+                <h1>Where2Go</h1>
+                <p>Yapay zeka destekli, kişiselleştirilmiş rota mimarı. Şehirleri bir yerli gibi keşfedin.</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#download" class="btn">İndir</a>
+                    <a href="#features" class="btn btn-secondary">Özellikler</a>
                 </div>
-                <p style="font-size: 0.875rem; color: var(--text-light); margin-top: 0.5rem;">
-                    * Uygulama yakında mağazada yayınlanacaktır
-                </p>
-
-                <h3 style="margin-top: 3rem;">Destek ve İletişim</h3>
-                <p>
-                    Sorularınız veya geri bildirimleriniz için bizimle iletişime geçebilirsiniz:<br>
-                    <strong>E-posta:</strong> <a href="mailto:support@aeydevstudio.me">support@aeydevstudio.me</a>
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Legal Links Section -->
-    <section class="section" style="background-color: var(--bg-white); padding: 2rem 0;">
+    <!-- Features -->
+    <section class="section" id="features">
         <div class="container">
-            <div style="text-align: center;">
-                <h3>Yasal Bilgiler</h3>
-                <p style="margin: 1rem 0;">
-                    <a href="privacy.html">Gizlilik Politikası</a> | 
-                    <a href="kvkk.html">KVKK Aydınlatma Metni</a> | 
-                    <a href="terms.html">Kullanım Şartları</a>
-                </p>
+            <h2 style="margin-bottom: 3rem;">Özellikler</h2>
+            <div class="apps-grid">
+                <div class="app-card" style="padding: 2rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">🤖 AI Rota</h3>
+                    <p>Siz sadece şehri ve tarihi seçin. Yapay zeka, ilgi alanlarınıza göre saniyeler içinde mükemmel
+                        rotayı oluştursun.</p>
+                </div>
+                <div class="app-card" style="padding: 2rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">📍 Akıllı Konum</h3>
+                    <p>Gezilecek yerler, restoranlar ve gizli noktalar. Her lokasyon için detaylı bilgiler ve ipuçları.
+                    </p>
+                </div>
+                <div class="app-card" style="padding: 2rem;">
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">⚡ Çevrimdışı Mod</h3>
+                    <p>İnternetiniz olmasa bile rotalarınız cebinizde. Kesintisiz keşif deneyimi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="section" id="download" style="padding-top: 0;">
+        <div class="container">
+            <div
+                style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 4rem; text-align: center;">
+                <h2 style="margin-bottom: 1rem;">Keşfetmeye Hazır mısınız?</h2>
+                <p style="margin-bottom: 2rem;">Where2Go ile seyahatlerinizi unutulmaz anılara dönüştürün.</p>
+                <div class="play-store-badge">
+                    <a href="#" target="_blank" rel="noopener">
+                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png"
+                            alt="Google Play'den indirin"
+                            style="height: 80px; filter: grayscale(100%) brightness(1.2); transition: all 0.3s;">
+                    </a>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem;">* Yakında App Store ve Play
+                    Store'da.</p>
             </div>
         </div>
     </section>
@@ -121,28 +97,30 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
+                <div class="footer-brand">
                     <h4>AEY Dev Studio</h4>
-                    <p>Modern mobil uygulamalar geliştiriyoruz.</p>
+                    <p>Where2Go bir AEY Dev Studio ürünüdür.</p>
                 </div>
-                
                 <div class="footer-section">
-                    <h4>Uygulamalar</h4>
-                    <a href="index.html">Where2Go</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Yasal</h4>
-                    <a href="privacy.html">Gizlilik Politikası</a>
-                    <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+                    <h5>Yasal</h5>
                     <a href="terms.html">Kullanım Şartları</a>
+                    <a href="privacy.html">Gizlilik Politikası</a>
+                    <a href="kvkk.html">KVKK</a>
                 </div>
             </div>
-            
             <div class="footer-bottom">
-                <p>&copy; 2024 AEY Dev Studio. Tüm hakları saklıdır.</p>
+                <p>&copy; 2026 AEY Dev Studio.</p>
             </div>
         </div>
     </footer>
+
+    <style>
+        /* Custom hover for play badge */
+        .play-store-badge img:hover {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.05);
+        }
+    </style>
 </body>
+
 </html>
