@@ -197,15 +197,15 @@ a {
 }
 
 .logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1.5rem;
-    letter-spacing: -0.05em;
-    position: relative;
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
 }
 
-.logo span {
-    color: var(--primary);
+.logo img {
+    height: clamp(32px, 5vw, 48px);
+    width: auto;
+    display: block;
 }
 
 .nav {
@@ -553,8 +553,8 @@ a {
         height: 60px;
     }
     
-    .logo {
-        font-size: 1.25rem;
+    .logo img {
+        height: 32px;
     }
     
     .footer-content {
