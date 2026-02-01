@@ -6,19 +6,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap');
 
 :root {
-    /* Color Palette - Deep Obsidian & Electric Indigo */
-    --bg-deep: #050507;
-    --bg-surface: #0f1016;
-    --bg-surface-trans: rgba(15, 16, 22, 0.7);
+    /* Color Palette - Warm Cream & Indigo Accent */
+    --bg-deep: #faf8f5;
+    --bg-surface: #fffdf9;
+    --bg-surface-trans: rgba(250, 248, 245, 0.9);
     
     --primary: #6366f1;
-    --primary-glow: rgba(99, 102, 241, 0.4);
+    --primary-glow: rgba(99, 102, 241, 0.3);
     --secondary: #2dd4bf;
     
-    --text-main: #ffffff;
-    --text-muted: #94a3b8;
+    --text-main: #2d2a26;
+    --text-muted: #6b6660;
     
-    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(45, 42, 38, 0.1);
     --border-glow: rgba(99, 102, 241, 0.3);
 
     /* Spacing & Layout */
@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 800;
-    background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+    background: linear-gradient(135deg, #2d2a26 0%, #6b6660 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -182,7 +182,7 @@ a {
     top: 0;
     width: 100%;
     height: var(--header-height);
-    background: rgba(5, 5, 7, 0.6);
+    background: rgba(250, 248, 245, 0.9);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-subtle);
     z-index: 1000;
@@ -246,7 +246,7 @@ a {
     display: flex;
     align-items: center;
     padding-top: var(--header-height);
-    background: radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.15) 0%, transparent 40%);
+    background: radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
 }
 
 .hero-content {
@@ -279,27 +279,28 @@ a {
 /* Feature/Apps Section */
 .apps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
     margin-top: 4rem;
 }
 
 .app-card {
-    background: rgba(255, 255, 255, 0.02);
+    background: rgba(255, 253, 249, 0.8);
     border: 1px solid var(--border-subtle);
     border-radius: 20px;
-    padding: 3rem;
+    padding: 2rem;
     transition: all 0.4s var(--ease-smooth);
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(45, 42, 38, 0.06);
 }
 
 .app-card:hover {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 253, 249, 0.95);
     border-color: var(--primary);
     transform: translateY(-10px) scale(1.01);
-    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.25);
 }
 
 .app-card::before {
@@ -309,7 +310,7 @@ a {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(45deg, transparent 0%, rgba(99, 102, 241, 0.03) 100%);
+    background: linear-gradient(45deg, transparent 0%, rgba(79, 70, 229, 0.03) 100%);
     opacity: 0;
     transition: opacity 0.4s;
 }
@@ -344,7 +345,7 @@ a {
     font-family: 'Syne', sans-serif;
     font-size: 4rem;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.03);
+    color: rgba(79, 70, 229, 0.08);
     position: absolute;
     top: 1rem;
     right: 2rem;
@@ -355,7 +356,7 @@ a {
 .footer {
     border-top: 1px solid var(--border-subtle);
     padding: 6rem 0 2rem;
-    background: linear-gradient(to top, #0f1016 0%, transparent 100%);
+    background: linear-gradient(to top, #f5f2ed 0%, transparent 100%);
 }
 
 .footer-content {
@@ -416,7 +417,7 @@ a {
 }
 
 .legal-code {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 253, 249, 0.8);
     padding: 3rem;
     border-radius: 20px;
     border: 1px solid var(--border-subtle);
@@ -457,22 +458,110 @@ a {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
-    h1 { font-size: 3.5rem; }
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.75rem; }
+    
+    .section {
+        padding: 4rem 0;
+    }
     
     .header .container {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
     }
     
     .nav {
-        display: none; /* Todo: Add Mobile Menu if needed, for now stick to simple */
+        gap: 1.5rem;
+    }
+    
+    .nav a {
+        font-size: 0.85rem;
+    }
+    
+    .hero {
+        min-height: auto;
+        padding: 6rem 0 4rem;
+        padding-top: calc(var(--header-height) + 2rem);
+    }
+    
+    .hero-content {
+        padding: 0 0.5rem;
+    }
+    
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .btn {
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .apps-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+    }
+    
+    .app-card {
+        padding: 1.5rem;
+    }
+    
+    .app-card h3 {
+        font-size: 1.5rem;
+    }
+    
+    .app-number {
+        font-size: 3rem;
+        top: 0.5rem;
+        right: 1rem;
+    }
+    
+    .footer {
+        padding: 3rem 0 1.5rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-brand {
+        grid-column: span 2;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    h1 { font-size: 2rem; }
+    
+    .container {
+        width: 95%;
+    }
+    
+    .header {
+        height: 60px;
+    }
+    
+    .logo {
+        font-size: 1.25rem;
     }
     
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
     
-    .hero-content p {
-        font-size: 1.25rem;
+    .footer-brand {
+        grid-column: span 1;
     }
 }
