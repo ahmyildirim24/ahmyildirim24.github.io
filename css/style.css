@@ -6,20 +6,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap');
 
 :root {
-    /* Color Palette - Modern Light & Trustworthy */
-    --bg-deep: #f8fafc;
-    --bg-surface: #ffffff;
-    --bg-surface-trans: rgba(255, 255, 255, 0.85);
+    /* Color Palette - Warm Cream & Indigo Accent */
+    --bg-deep: #faf8f5;
+    --bg-surface: #fffdf9;
+    --bg-surface-trans: rgba(250, 248, 245, 0.9);
     
-    --primary: #4f46e5;
-    --primary-glow: rgba(79, 70, 229, 0.25);
-    --secondary: #0d9488;
+    --primary: #6366f1;
+    --primary-glow: rgba(99, 102, 241, 0.3);
+    --secondary: #2dd4bf;
     
-    --text-main: #1e293b;
-    --text-muted: #64748b;
+    --text-main: #2d2a26;
+    --text-muted: #6b6660;
     
-    --border-subtle: rgba(0, 0, 0, 0.08);
-    --border-glow: rgba(79, 70, 229, 0.3);
+    --border-subtle: rgba(45, 42, 38, 0.1);
+    --border-glow: rgba(99, 102, 241, 0.3);
 
     /* Spacing & Layout */
     --container-width: 1200px;
@@ -62,8 +62,8 @@ body::before {
     width: 200%;
     height: 200%;
     background: 
-        radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(13, 148, 136, 0.04) 0%, transparent 30%);
+        radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(45, 212, 191, 0.05) 0%, transparent 30%);
     z-index: -1;
     pointer-events: none;
     animation: pulseAtmosphere 15s ease-in-out infinite alternate;
@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 800;
-    background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+    background: linear-gradient(135deg, #2d2a26 0%, #6b6660 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -182,7 +182,7 @@ a {
     top: 0;
     width: 100%;
     height: var(--header-height);
-    background: rgba(248, 250, 252, 0.85);
+    background: rgba(250, 248, 245, 0.9);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-subtle);
     z-index: 1000;
@@ -246,7 +246,7 @@ a {
     display: flex;
     align-items: center;
     padding-top: var(--header-height);
-    background: radial-gradient(circle at 100% 0%, rgba(79, 70, 229, 0.08) 0%, transparent 40%);
+    background: radial-gradient(circle at 100% 0%, rgba(99, 102, 241, 0.1) 0%, transparent 40%);
 }
 
 .hero-content {
@@ -285,7 +285,7 @@ a {
 }
 
 .app-card {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 253, 249, 0.8);
     border: 1px solid var(--border-subtle);
     border-radius: 20px;
     padding: 2rem;
@@ -293,14 +293,14 @@ a {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 20px rgba(45, 42, 38, 0.06);
 }
 
 .app-card:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 253, 249, 0.95);
     border-color: var(--primary);
     transform: translateY(-10px) scale(1.01);
-    box-shadow: 0 20px 40px -20px rgba(79, 70, 229, 0.2);
+    box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.25);
 }
 
 .app-card::before {
@@ -356,7 +356,7 @@ a {
 .footer {
     border-top: 1px solid var(--border-subtle);
     padding: 6rem 0 2rem;
-    background: linear-gradient(to top, #f1f5f9 0%, transparent 100%);
+    background: linear-gradient(to top, #f5f2ed 0%, transparent 100%);
 }
 
 .footer-content {
@@ -417,7 +417,7 @@ a {
 }
 
 .legal-code {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 253, 249, 0.8);
     padding: 3rem;
     border-radius: 20px;
     border: 1px solid var(--border-subtle);
