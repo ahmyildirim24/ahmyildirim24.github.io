@@ -10,15 +10,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
 
     <!-- Styles -->
     <link rel="stylesheet" href="../css/style.css">
 
     <!-- Favicon -->
     <link rel="icon" href="../assets/logo.png" type="image/png">
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js" as="script">
+    <link rel="preload" href="screenshots/homePagelightTheme.png" as="image">
+    <link rel="preload" href="screenshots/routePagelightTheme.png" as="image">
 </head>
 
 <body>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
 
     <!-- Header -->
     <header class="header">
@@ -38,14 +48,74 @@
     <section class="hero" style="min-height: 80vh;">
         <div class="container">
             <div class="hero-content">
-                <span
-                    style="color: var(--secondary); font-family: 'Syne', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 1rem;">Travel
-                    Intelligence</span>
-                <h1>Where2Go</h1>
-                <p>Ultra gelişmiş algoritma destekli, kişiselleştirilmiş rota mimarı. Şehirleri bir yerli gibi keşfedin.</p>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="#download" class="btn">İndir</a>
+                <div class="app-badge">
+                    <img src="assets/logo_wide_light.png" alt="Where2Go" class="hero-app-logo">
+                </div>
+                <span class="hero-tag">Travel Intelligence</span>
+                <h1 class="hero-title">Where2Go</h1>
+                <p class="hero-subtitle">Ultra gelişmiş algoritma destekli, kişiselleştirilmiş rota mimarı. Şehirleri bir yerli gibi keşfedin.</p>
+                <div class="hero-buttons">
+                    <a href="#preview" class="btn">Önizleme</a>
                     <a href="#features" class="btn btn-secondary">Özellikler</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Preview Carousel -->
+    <section class="section" id="preview">
+        <div class="container">
+            <h2 data-aos="fade-up">Uygulama Önizlemesi</h2>
+            <p data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 2rem;">Hem açık hem koyu tema ile göz yormayan deneyim.</p>
+            
+            <!-- Theme Toggle -->
+            <div class="theme-toggle" data-aos="fade-up" data-aos-delay="150">
+                <button class="theme-btn active" data-theme="light">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                    Açık Tema
+                </button>
+                <button class="theme-btn" data-theme="dark">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+                    </svg>
+                    Koyu Tema
+                </button>
+            </div>
+
+            <!-- Phone Gallery - Static Grid -->
+            <div class="phone-gallery" data-aos="fade-up" data-aos-delay="200">
+                <!-- Light Theme Gallery -->
+                <div class="theme-gallery active" id="gallery-light">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <img src="screenshots/homePagelightTheme.png" alt="Ana Sayfa - Açık Tema" loading="lazy">
+                        </div>
+                        <p class="screenshot-label">Ana Sayfa</p>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <img src="screenshots/routePagelightTheme.png" alt="Rota Sayfası - Açık Tema" loading="lazy">
+                        </div>
+                        <p class="screenshot-label">Rota Detayı</p>
+                    </div>
+                </div>
+                <!-- Dark Theme Gallery -->
+                <div class="theme-gallery" id="gallery-dark">
+                    <div class="phone-mockup">
+                        <div class="phone-frame dark">
+                            <img src="screenshots/homePagedarkTheme.png" alt="Ana Sayfa - Koyu Tema" loading="lazy">
+                        </div>
+                        <p class="screenshot-label">Ana Sayfa</p>
+                    </div>
+                    <div class="phone-mockup">
+                        <div class="phone-frame dark">
+                            <img src="screenshots/routePagedarkTheme.png" alt="Rota Sayfası - Koyu Tema" loading="lazy">
+                        </div>
+                        <p class="screenshot-label">Rota Detayı</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -54,20 +124,35 @@
     <!-- Features -->
     <section class="section" id="features">
         <div class="container">
-            <h2 style="margin-bottom: 3rem;">Özellikler</h2>
+            <h2 data-aos="fade-up">Özellikler</h2>
             <div class="apps-grid">
-                <div class="app-card" style="padding: 2rem;">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Akıllı Rota</h3>
-                    <p>Siz sadece şehri ve tarihi seçin. Uygulama, ilgi alanlarınıza göre saniyeler içinde mükemmel
-                        rotayı oluştursun.</p>
+                <div class="app-card feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                    </div>
+                    <h3>Akıllı Rota</h3>
+                    <p>Siz sadece şehri ve tarihi seçin. Uygulama, ilgi alanlarınıza göre saniyeler içinde mükemmel rotayı oluştursun.</p>
                 </div>
-                <div class="app-card" style="padding: 2rem;">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Hızlı ve Kolay Konum</h3>
-                    <p>Gezilecek yerler, restoranlar ve gizli noktalar. Her lokasyon için detaylı bilgiler ve ipuçları.
-                    </p>
+                <div class="app-card feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Hızlı Konum</h3>
+                    <p>Gezilecek yerler, restoranlar ve gizli noktalar. Her lokasyon için detaylı bilgiler ve ipuçları.</p>
                 </div>
-                <div class="app-card" style="padding: 2rem;">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Çevrimdışı Mod</h3>
+                <div class="app-card feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01M9.172 13.172a4 4 0 015.656 0M12 10h.01M6.343 9.343a6 6 0 018.484 0"/>
+                            <path d="M12 6h.01"/>
+                        </svg>
+                    </div>
+                    <h3>Çevrimdışı Mod</h3>
                     <p>İnternetiniz olmasa bile rotalarınız cebinizde. Kesintisiz keşif deneyimi.</p>
                 </div>
             </div>
@@ -75,21 +160,25 @@
     </section>
 
     <!-- Download Section -->
-    <section class="section" id="download" style="padding-top: 0;">
+    <section class="section" id="download">
         <div class="container">
-            <div
-                style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 4rem; text-align: center;">
-                <h2 style="margin-bottom: 1rem;">Keşfetmeye Hazır mısınız?</h2>
-                <p style="margin-bottom: 2rem;">Where2Go ile seyahatlerinizi unutulmaz anılara dönüştürün.</p>
-                <div class="play-store-badge">
-                    <a href="#" target="_blank" rel="noopener">
-                        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png"
-                            alt="Google Play'den indirin"
-                            style="height: 80px; filter: grayscale(100%) brightness(1.2); transition: all 0.3s;">
-                    </a>
+            <div class="download-card" data-aos="fade-up">
+                <div class="download-content">
+                    <h2>Keşfetmeye Hazır mısınız?</h2>
+                    <p>Where2Go ile seyahatlerinizi unutulmaz anılara dönüştürün.</p>
+                    <div class="store-badges">
+                        <a href="#" target="_blank" rel="noopener" class="store-badge">
+                            <img src="https://play.google.com/intl/en_us/badges/static/images/badges/tr_badge_web_generic.png"
+                                alt="Google Play'den indirin">
+                        </a>
+                    </div>
+                    <p class="coming-soon-text">* Yakında App Store ve Play Store'da.</p>
                 </div>
-                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 1rem;">* Yakında App Store ve Play
-                    Store'da.</p>
+                <div class="download-visual">
+                    <div class="floating-phone">
+                        <img src="screenshots/homePagelightTheme.png" alt="Where2Go App">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -115,13 +204,103 @@
         </div>
     </footer>
 
-    <style>
-        /* Custom hover for play badge */
-        .play-store-badge img:hover {
-            filter: grayscale(0%) brightness(1);
-            transform: scale(1.05);
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <script>
+        // ===== PARTICLES CONFIGURATION =====
+        tsParticles.load("particles-js", {
+            fullScreen: false,
+            background: { color: { value: "transparent" } },
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "grab" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, links: { opacity: 0.5 } }
+                }
+            },
+            particles: {
+                color: { value: "#6366f1" },
+                links: {
+                    color: "#6366f1",
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.12,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 0.8,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    outModes: { default: "out" }
+                },
+                number: {
+                    density: { enable: true, area: 900 },
+                    value: 50
+                },
+                opacity: { value: 0.25, random: true },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 3 } }
+            },
+            detectRetina: true
+        });
+
+        // ===== GSAP ANIMATIONS =====
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero entrance
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        heroTl
+            .from(".app-badge", { y: 30, opacity: 0, duration: 0.6, delay: 0.2 })
+            .from(".hero-tag", { y: 20, opacity: 0, duration: 0.5 }, "-=0.3")
+            .from(".hero-title", { y: 50, opacity: 0, duration: 0.8 }, "-=0.3")
+            .from(".hero-subtitle", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
+            .from(".hero-buttons", { y: 20, opacity: 0, duration: 0.5 }, "-=0.3");
+
+        // Scroll animations
+        gsap.utils.toArray("[data-aos]").forEach(el => {
+            const delay = el.dataset.aosDelay ? parseInt(el.dataset.aosDelay) / 1000 : 0;
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 40,
+                opacity: 0,
+                duration: 0.8,
+                delay: delay
+            });
+        });
+
+        // ===== THEME TOGGLE =====
+        const themeBtns = document.querySelectorAll('.theme-btn');
+        const galleries = document.querySelectorAll('.theme-gallery');
+
+        function switchTheme(theme) {
+            themeBtns.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.theme-btn[data-theme="${theme}"]`).classList.add('active');
+            
+            galleries.forEach(gallery => {
+                if (gallery.id === `gallery-${theme}`) {
+                    gallery.classList.add('active');
+                } else {
+                    gallery.classList.remove('active');
+                }
+            });
         }
-    </style>
+
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => switchTheme(btn.dataset.theme));
+        });
+    </script>
 </body>
 
 </html>

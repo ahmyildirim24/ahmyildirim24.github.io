@@ -9,6 +9,17 @@
     <!-- Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js" as="script">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" as="script">
+    <link rel="preload" href="where2go/screenshots/homePagelightTheme.png" as="image">
+    
+    <!-- Prefetch Where2Go page resources -->
+    <link rel="prefetch" href="where2go/index.html">
+    <link rel="prefetch" href="where2go/assets/logo_wide_light.png">
     
     <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
@@ -17,6 +28,9 @@
     <link rel="icon" href="assets/logo.png" type="image/png">
 </head>
 <body>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
 
     <!-- Header -->
     <header class="header">
@@ -38,30 +52,53 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Dijital Evreni <br><span>Yeniden Tasarla</span></h1>
-                <p>Kullanıcı deneyimini sanatla buluşturan, sınırları zorlayan mobil teknolojiler.</p>
-                <a href="#apps" class="btn">Keşfetmeye Başla</a>
+                <h1 class="hero-title">Dijital Evreni <br><span class="gradient-text">Yeniden Tasarla</span></h1>
+                <p class="hero-subtitle">Kullanıcı deneyimini sanatla buluşturan, sınırları zorlayan mobil teknolojiler.</p>
+                <a href="#apps" class="btn hero-cta">Keşfetmeye Başla</a>
             </div>
         </div>
-        <div class="scroll-indicator"></div>
+        <div class="scroll-indicator">
+            <div class="scroll-dot"></div>
+        </div>
     </section>
 
     <!-- Apps/Portfolio Section -->
     <section class="section" id="apps">
         <div class="container">
-            <h2>Projelerim</h2>
+            <h2 data-aos="fade-up">Projelerim</h2>
             <div class="apps-grid">
-                <!-- Where2Go Card -->
-                <div class="app-card">
+                <!-- Where2Go Card - Featured -->
+                <div class="app-card app-card-featured" data-aos="fade-up" data-aos-delay="100" data-tilt>
                     <span class="app-number">01</span>
-                    <h3>Where2Go</h3>
-                    <p>Akıllı seyahat asistanınız. Sadece tarih ve şehri seçin, gerisini bize bırakın. Kişiselleştirilmiş rotalar ve keşif noktaları.</p>
-                    <a href="where2go/index.html" class="btn btn-secondary">İncele</a>
+                    <div class="app-card-content">
+                        <div class="app-card-info">
+                            <div class="app-card-header">
+                                <img src="where2go/assets/logo_wide_light.png" alt="Where2Go Logo" class="app-logo">
+                            </div>
+                            <h3>Where2Go</h3>
+                            <p>Akıllı seyahat asistanınız. Sadece tarih ve şehri seçin, gerisini bize bırakın. Kişiselleştirilmiş rotalar ve keşif noktaları.</p>
+                            <div class="app-tech-stack">
+                                <span class="tech-badge">Sizin için Akıllı Rota</span>
+                                <span class="tech-badge">Hava Durumu Uyumlu</span>
+                            </div>
+                            <a href="where2go/index.html" class="btn btn-secondary">İncele</a>
+                        </div>
+                        <div class="app-card-visual">
+                            <div class="app-preview-frame">
+                                <img src="where2go/screenshots/homePagelightTheme.png" alt="Where2Go Preview" class="app-preview-img">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Coming Soon Card -->
-                <div class="app-card" style="opacity: 0.5;">
+                <div class="app-card coming-soon" data-aos="fade-up" data-aos-delay="200">
                     <span class="app-number">02</span>
+                    <div class="coming-soon-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                        </svg>
+                    </div>
                     <h3>Gizli Proje</h3>
                     <p>Henüz duyurulmadı. Geleceği inşa ediyorum.</p>
                     <button class="btn btn-secondary" disabled>Çok Yakında</button>
@@ -73,26 +110,44 @@
     <!-- About Content (Refined) -->
     <section class="section" id="about">
         <div class="container">
-            <div style="max-width: 800px;">
-                <h2>Hakkımda</h2>
-                <p>
+            <div class="about-content">
+                <h2 data-aos="fade-up">Hakkımda</h2>
+                <p data-aos="fade-up" data-aos-delay="100">
                     Ben Ahmet Erkutay Yıldırım, AEY Dev Studio'nun kurucusu ve geliştiricisiyim. 
                     Kod satırlarının ötesine geçerek deneyimler tasarlıyorum. 
                     Sıradan olana meydan okuyor, teknolojiyi estetikle harmanlıyorum. 
                     Amacım sadece "çalışan" uygulamalar değil, "ilham veren" dijital eserler bırakmak.
                 </p>
-                <div style="margin-top: 3rem; display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                    <div>
-                        <h4 style="color: var(--primary); margin-bottom: 0.5rem">İnovasyon</h4>
-                        <p style="font-size: 1rem">En yeni teknolojilerle sınırları zorluyorum.</p>
+                <div class="value-pillars">
+                    <div class="value-card" data-aos="zoom-in" data-aos-delay="150">
+                        <div class="value-icon innovation">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9.663 17h4.674M12 3v1m6.364 1.636l-.707.707M21 12h-1M18.364 18.364l-.707-.707M12 21v-1m-6.364-1.636l.707-.707M3 12h1m2.636-6.364l.707.707"/>
+                                <circle cx="12" cy="12" r="4"/>
+                            </svg>
+                        </div>
+                        <h4>İnovasyon</h4>
+                        <p>En yeni teknolojilerle sınırları zorluyorum.</p>
                     </div>
-                    <div>
-                        <h4 style="color: var(--secondary); margin-bottom: 0.5rem">Estetik</h4>
-                        <p style="font-size: 1rem">Göz alıcı ve akıcı arayüzler.</p>
+                    <div class="value-card" data-aos="zoom-in" data-aos-delay="250">
+                        <div class="value-icon aesthetic">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                        </div>
+                        <h4>Estetik</h4>
+                        <p>Göz alıcı ve akıcı arayüzler.</p>
                     </div>
-                    <div>
-                        <h4 style="color: var(--text-main); margin-bottom: 0.5rem">Odak</h4>
-                        <p style="font-size: 1rem">Kullanıcı merkezli çözüm mimarisi.</p>
+                    <div class="value-card" data-aos="zoom-in" data-aos-delay="350">
+                        <div class="value-icon focus">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="6"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </div>
+                        <h4>Odak</h4>
+                        <p>Kullanıcı merkezli çözüm mimarisi.</p>
                     </div>
                 </div>
             </div>
@@ -102,11 +157,11 @@
     <!-- Contact Section -->
     <section class="section" id="contact" style="padding-bottom: 0;">
         <div class="container">
-            <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(45, 212, 191, 0.06)); padding: 4rem; border-radius: 20px; border: 1px solid var(--border-subtle);">
+            <div class="contact-card" data-aos="fade-up">
                 <h2>İletişim</h2>
                 <p>Bir fikriniz mi var? Geleceği birlikte konuşalım.</p>
-                <div style="margin-top: 2rem;">
-                    <a href="mailto:info@aeydevstudio.me" class="btn">info@aeydevstudio.me</a>
+                <div class="contact-cta">
+                    <a href="mailto:info@aeydevstudio.me" class="btn glow-btn">info@aeydevstudio.me</a>
                 </div>
             </div>
         </div>
@@ -148,6 +203,114 @@
             </div>
         </div>
     </footer>
+
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js"></script>
+
+    <script>
+        // ===== PARTICLES CONFIGURATION =====
+        tsParticles.load("particles-js", {
+            fullScreen: false,
+            background: { color: { value: "transparent" } },
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onHover: { enable: true, mode: "grab" },
+                    resize: true
+                },
+                modes: {
+                    grab: { distance: 140, links: { opacity: 0.5 } }
+                }
+            },
+            particles: {
+                color: { value: "#6366f1" },
+                links: {
+                    color: "#6366f1",
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.15,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    outModes: { default: "out" }
+                },
+                number: {
+                    density: { enable: true, area: 800 },
+                    value: 60
+                },
+                opacity: { value: 0.3, random: true },
+                shape: { type: "circle" },
+                size: { value: { min: 1, max: 3 } }
+            },
+            detectRetina: true
+        });
+
+        // ===== GSAP ANIMATIONS =====
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero entrance animation
+        const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        heroTl
+            .from(".hero-title", { y: 80, opacity: 0, duration: 1, delay: 0.3 })
+            .from(".hero-subtitle", { y: 40, opacity: 0, duration: 0.8 }, "-=0.5")
+            .from(".hero-cta", { y: 30, opacity: 0, duration: 0.6 }, "-=0.4")
+            .from(".scroll-indicator", { opacity: 0, duration: 0.8 }, "-=0.2");
+
+        // Scroll-triggered animations for sections
+        gsap.utils.toArray(".section").forEach(section => {
+            gsap.from(section, {
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 85%",
+                    toggleActions: "play none none reverse"
+                },
+                y: 60,
+                opacity: 0,
+                duration: 1
+            });
+        });
+
+        // Header background on scroll
+        ScrollTrigger.create({
+            start: "top -100",
+            onUpdate: (self) => {
+                const header = document.querySelector(".header");
+                if (self.progress > 0) {
+                    header.classList.add("scrolled");
+                } else {
+                    header.classList.remove("scrolled");
+                }
+            }
+        });
+
+        // ===== VANILLA TILT FOR CARDS =====
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 8,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.15,
+            scale: 1.02
+        });
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
