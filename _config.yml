@@ -1,0 +1,4 @@
+# Jekyll configuration for GitHub Pages
+# Required to serve the .well-known directory (dotfolders are ignored by default)
+include:
+  - .well-known

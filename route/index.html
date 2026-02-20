@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Where2Go — Rota Paylaşımı</title>
+  <style>
+    /* ── Reset & base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:  #023047;
+      --blue:  #8ecae6;
+      --teal:  #219ebc;
+      --amber: #ffb703;
+      --orange:#fb8500;
+      --white: #ffffff;
+      --grey:  #f0f4f8;
+      --text:  #011a2b;
+      --muted: #4a6174;
+    }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "Helvetica Neue", Arial, sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Layout ───────────────────────────────────────────────── */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, #1a4f6e 0%, transparent 70%),
+        var(--navy);
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(142, 202, 230, 0.18);
+      border-radius: 24px;
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(142, 202, 230, 0.06);
+    }
+
+    /* ── Logo / brand ─────────────────────────────────────────── */
+    .logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--navy) 100%);
+      border: 2px solid rgba(142, 202, 230, 0.3);
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 20px rgba(33, 158, 188, 0.35);
+    }
+
+    .logo-wrap svg {
+      width: 38px;
+      height: 38px;
+    }
+
+    .brand {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(90deg, var(--blue) 0%, var(--amber) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.25rem;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Headline & body ──────────────────────────────────────── */
+    .headline {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+
+    .body-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Buttons ──────────────────────────────────────────────── */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+      border: none;
+      outline: none;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--teal) 0%, var(--blue) 100%);
+      color: var(--navy);
+      box-shadow: 0 4px 20px rgba(33, 158, 188, 0.45);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 6px 28px rgba(33, 158, 188, 0.6);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(142, 202, 230, 0.4);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(142, 202, 230, 0.08);
+      border-color: var(--blue);
+      transform: translateY(-1px);
+    }
+
+    .btn svg {
+      flex-shrink: 0;
+    }
+
+    /* ── Invalid / desktop states ─────────────────────────────── */
+    .state-invalid .headline {
+      color: var(--amber);
+    }
+
+    .state-desktop .desktop-note {
+      display: flex;
+    }
+
+    .desktop-note {
+      display: none;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: rgba(255, 183, 3, 0.08);
+      border: 1px solid rgba(255, 183, 3, 0.25);
+      border-radius: 14px;
+      padding: 1rem 1.1rem;
+      text-align: left;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 1.75rem;
+    }
+
+    .desktop-note svg {
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Auto-open notice ─────────────────────────────────────── */
+    .auto-open-notice {
+      display: none;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-bottom: 1rem;
+    }
+
+    /* ── Divider ──────────────────────────────────────────────── */
+    .divider {
+      height: 1px;
+      background: rgba(142, 202, 230, 0.12);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    footer {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.45);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--blue);
+    }
+
+    /* ── Spinner (auto-open feedback) ─────────────────────────── */
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: var(--teal);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      flex-shrink: 0;
+    }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 380px) {
+      .card { padding: 2rem 1.25rem 1.5rem; }
+      .brand { font-size: 1.5rem; }
+      .headline { font-size: 1.1rem; }
+    }
+
+    @media (min-width: 480px) {
+      .btn-group { flex-direction: row; }
+      .btn { width: auto; flex: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="card" id="card">
+
+    <!-- Logo -->
+    <div class="logo-wrap" aria-hidden="true">
+      <!-- Map pin / route icon -->
+      <svg viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="19" cy="15" r="5.5" stroke="#ffffff" stroke-width="2.2"/>
+        <path d="M19 3C12.925 3 8 7.925 8 14c0 8.25 11 22 11 22s11-13.75 11-22c0-6.075-4.925-11-11-11Z"
+              stroke="#ffffff" stroke-width="2.2" stroke-linejoin="round"/>
+        <path d="M10 30 Q14 27 19 29 Q24 31 28 28" stroke="rgba(255,255,255,0.4)"
+              stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <!-- Brand name -->
+    <h1 class="brand">Where2Go</h1>
+    <p class="brand-sub">Travel Intelligence</p>
+
+    <!-- Desktop notice (shown via JS on non-mobile) -->
+    <div class="desktop-note" id="desktopNote" role="note">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffb703" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <span id="desktopText">Bu bağlantıyı telefonunuzda açarak Where2Go uygulamasında rotayı görüntüleyebilirsiniz.</span>
+    </div>
+
+    <!-- Main content -->
+    <h2 class="headline" id="headline">
+      Birisi seninle bir seyahat rotası paylaştı!
+    </h2>
+
+    <p class="body-text" id="bodyText">
+      Bu rotayı görüntülemek ve harika yerleri keşfetmek için Where2Go'yu indir.
+    </p>
+
+    <!-- Auto-open notice -->
+    <p class="auto-open-notice" id="autoOpenNotice">
+      &#x2022; Uygulama açılmaya çalışılıyor…
+    </p>
+
+    <!-- Buttons -->
+    <div class="btn-group" id="btnGroup">
+      <!-- "Open in App" — href set by JS; visible even without JS as a deep link -->
+      <a
+        id="btnOpenApp"
+        class="btn btn-primary"
+        href="https://play.google.com/store/apps/details?id=com.where2go.app"
+        rel="noopener noreferrer"
+      >
+        <span class="spinner" id="spinner"></span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+        </svg>
+        Uygulamada Aç
+      </a>
+
+      <!-- Google Play -->
+      <a
+        id="btnGooglePlay"
+        class="btn btn-secondary"
+        href="https://play.google.com/store/apps/details?id=com.where2go.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3.18 23.76a2 2 0 0 1-.68-.63 2 2 0 0 1-.29-1.07l.01-19.98a2 2 0 0 1 .29-1.07 2 2 0 0 1 .73-.65l11.2 11.31-11.26 12.09zm13.3-5.65-2.62-2.64L20.36 12l-6.5-3.47 2.62-2.64 8 4.28a1.5 1.5 0 0 1 0 2.66l-8 4.28zM4.27 1.23l10.29 10.39-2.62 2.64-8.35-12.4 0.68-.63z"/>
+        </svg>
+        Google Play'den İndir
+      </a>
+    </div>
+
+    <div class="divider"></div>
+
+    <footer>
+      <p>&copy; 2026 Where2Go &mdash; <a href="https://aeydevstudio.me">aeydevstudio.me</a></p>
+    </footer>
+
+  </div><!-- /.card -->
+</div><!-- /.page -->
+
+<script>
+(function () {
+  // ── Helpers ──────────────────────────────────────────────────
+  function isMobileDevice() {
+    return /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i
+      .test(navigator.userAgent);
+  }
+
+  function getParam(name) {
+    try {
+      return new URLSearchParams(window.location.search).get(name);
+    } catch (e) {
+      var m = window.location.search.match(new RegExp('[?&]' + name + '=([^&]*)'));
+      return m ? decodeURIComponent(m[1].replace(/\+/g, ' ')) : null;
+    }
+  }
+
+  // ── Grab elements ─────────────────────────────────────────────
+  var card          = document.getElementById('card');
+  var headline      = document.getElementById('headline');
+  var bodyText      = document.getElementById('bodyText');
+  var btnGroup      = document.getElementById('btnGroup');
+  var btnOpenApp    = document.getElementById('btnOpenApp');
+  var desktopNote   = document.getElementById('desktopNote');
+  var autoNotice    = document.getElementById('autoOpenNotice');
+  var spinner       = document.getElementById('spinner');
+
+  var routeId = getParam('id');
+
+  // ── No route ID → invalid state ───────────────────────────────
+  if (!routeId) {
+    card.classList.add('state-invalid');
+    headline.textContent = 'Geçersiz bağlantı';
+    bodyText.textContent = 'Bu bağlantı geçersiz ya da süresi dolmuş. Lütfen rotayı paylaşan kişiden tekrar iste.';
+    // Hide "Open in App" button when there's no ID — only show Play store link
+    btnOpenApp.style.display = 'none';
+    return;
+  }
+
+  // ── Build intent URL for Android ─────────────────────────────
+  var intentUrl = 'intent://aeydevstudio.me/route?id=' + encodeURIComponent(routeId)
+                + '#Intent;scheme=https;package=com.where2go.app;end';
+
+  // Update "Open in App" button
+  btnOpenApp.href = intentUrl;
+
+  // ── Desktop detection ─────────────────────────────────────────
+  if (!isMobileDevice()) {
+    card.classList.add('state-desktop');
+    desktopNote.style.display = 'flex';
+    // On desktop, hide the intent button (doesn't work) — just show Play Store
+    btnOpenApp.style.display = 'none';
+    return; // no auto-open attempt on desktop
+  }
+
+  // ── Auto-open on mobile after 1.5 s ──────────────────────────
+  autoNotice.style.display = 'block';
+  spinner.style.display    = 'inline-block';
+
+  var autoOpenTimer = setTimeout(function () {
+    spinner.style.display = 'none';
+    autoNotice.textContent = 'Uygulama bulunamazsa aşağıdaki butonları kullanabilirsin.';
+
+    // Attempt to open the app via intent URL
+    window.location.href = intentUrl;
+  }, 1500);
+
+  // If the user clicks the button manually before the timer fires, cancel the timer
+  btnOpenApp.addEventListener('click', function () {
+    clearTimeout(autoOpenTimer);
+    spinner.style.display = 'none';
+    autoNotice.style.display = 'none';
+  });
+})();
+</script>
+
+</body>
+</html>
