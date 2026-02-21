@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Where2Go — Email Verification</title>
+  <link rel="icon" href="/assets/logo.png">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #023047;
+      --blue: #8ecae6;
+      --teal: #219ebc;
+      --amber: #FFB703;
+      --orange: #FB8500;
+      --error: #F87171;
+      --success: #4ADE80;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --text-tertiary: #64748b;
+      --card-bg: #02374f;
+      --card-border: rgba(142, 202, 230, 0.2);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+        Arial, sans-serif;
+      background-color: var(--navy);
+      color: var(--text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 40px 32px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                  0 2px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .brand {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--amber);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+
+    /* --- States --- */
+    .state {
+      display: none;
+    }
+
+    .state.active {
+      display: block;
+    }
+
+    /* --- Loading State --- */
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid var(--card-border);
+      border-top: 4px solid var(--amber);
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .state-loading p {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    /* --- Icon Circles --- */
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .icon-circle.success {
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--success);
+    }
+
+    .icon-circle.error {
+      background: rgba(248, 113, 113, 0.15);
+      color: var(--error);
+    }
+
+    /* --- Titles & Body --- */
+    .state-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    .state-body {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    /* --- Button --- */
+    .btn-open {
+      display: block;
+      width: 100%;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--navy);
+      background: linear-gradient(135deg, var(--amber), var(--orange));
+      border: none;
+      border-radius: 14px;
+      text-decoration: none;
+      text-align: center;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-open:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-open:active {
+      transform: translateY(0);
+      opacity: 0.85;
+    }
+
+    /* --- Helper Text --- */
+    .helper-text {
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-tertiary);
+    }
+
+    /* --- Footer --- */
+    .footer {
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    /* --- Noscript --- */
+    noscript .state {
+      display: block;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 480px) {
+      .card {
+        padding: 32px 20px;
+        border-radius: 20px;
+      }
+
+      .state-title {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="brand">WHERE2GO</div>
+
+      <!-- State 1: Loading -->
+      <div id="state-loading" class="state state-loading active">
+        <div class="spinner"></div>
+        <p>Opening the app…</p>
+      </div>
+
+      <!-- State 2: Success / Fallback -->
+      <div id="state-success" class="state state-success">
+        <div class="icon-circle success">✓</div>
+        <h1 id="success-title" class="state-title">Email Verified!</h1>
+        <p id="success-body" class="state-body">Your email has been confirmed. Open the app and sign in to continue.</p>
+        <a id="btn-open" class="btn-open" href="where2go://login-callback">Open Where2Go</a>
+        <p class="helper-text">If the app does not open, make sure Where2Go is installed and try the button above.</p>
+      </div>
+
+      <!-- State 3: Error -->
+      <div id="state-error" class="state state-error">
+        <div class="icon-circle error">✕</div>
+        <h1 class="state-title">Link Expired</h1>
+        <p class="state-body">This link is invalid or has already been used. Open the app to request a new one.</p>
+        <a class="btn-open" href="where2go://login-callback">Open Where2Go</a>
+      </div>
+
+      <div class="footer">© 2026 Where2Go — aeydevstudio.me</div>
+    </div>
+  </div>
+
+  <!-- Fallback for no-JS: show the success state with button -->
+  <noscript>
+    <style>
+      #state-loading { display: none !important; }
+      #state-success { display: block !important; }
+    </style>
+  </noscript>
+
+  <script>
+    (function () {
+      // --- 1. Parse URL search params ---
+      var searchParams = new URLSearchParams(window.location.search);
+
+      // --- 2. Parse hash fragment params ---
+      var hashString = window.location.hash.replace(/^#/, '');
+      var hashParams = new URLSearchParams(hashString);
+
+      // --- 3. Merge all params ---
+      var allParams = new URLSearchParams();
+
+      searchParams.forEach(function (value, key) {
+        allParams.set(key, value);
+      });
+
+      hashParams.forEach(function (value, key) {
+        allParams.set(key, value);
+      });
+
+      // --- DOM refs ---
+      var stateLoading = document.getElementById('state-loading');
+      var stateSuccess = document.getElementById('state-success');
+      var stateError = document.getElementById('state-error');
+      var btnOpen = document.getElementById('btn-open');
+      var successTitle = document.getElementById('success-title');
+      var successBody = document.getElementById('success-body');
+
+      function showState(state) {
+        stateLoading.classList.remove('active');
+        stateSuccess.classList.remove('active');
+        stateError.classList.remove('active');
+        state.classList.add('active');
+      }
+
+      // --- 4. Check for errors ---
+      if (allParams.has('error') || allParams.has('error_code')) {
+        showState(stateError);
+        return;
+      }
+
+      // --- 5. Build deep link URL ---
+      var deepLinkUrl = 'where2go://login-callback';
+      var paramString = allParams.toString();
+      if (paramString) {
+        deepLinkUrl += '?' + paramString;
+      }
+
+      // --- 6. Set button href ---
+      btnOpen.href = deepLinkUrl;
+
+      // --- 7. Determine type and customize messaging ---
+      var type = allParams.get('type');
+
+      if (type === 'recovery') {
+        successTitle.textContent = 'Link Received!';
+        successBody.textContent = 'Open the app to set your new password.';
+      } else {
+        successTitle.textContent = 'Email Verified!';
+        successBody.textContent = 'Your email has been confirmed. Open the app and sign in to continue.';
+      }
+
+      // --- 8. Show loading and attempt to open app ---
+      showState(stateLoading);
+
+      try {
+        window.location.href = deepLinkUrl;
+      } catch (e) {
+        // Silently fail — fallback UI handles it
+      }
+
+      // --- 9. After 1500ms, show success/fallback state ---
+      setTimeout(function () {
+        showState(stateSuccess);
+      }, 1500);
+    })();
+  </script>
+</body>
+</html>
