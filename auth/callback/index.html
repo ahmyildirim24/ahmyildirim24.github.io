@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Where2Go — Email Verification</title>
+  <title>Where2Go — E-posta Doğrulama</title>
   <link rel="icon" href="/assets/logo.png">
   <style>
     *, *::before, *::after {
@@ -203,24 +203,24 @@
       <!-- State 1: Loading -->
       <div id="state-loading" class="state state-loading active">
         <div class="spinner"></div>
-        <p>Opening the app…</p>
+        <p>Uygulama açılıyor…</p>
       </div>
 
       <!-- State 2: Success / Fallback -->
       <div id="state-success" class="state state-success">
         <div class="icon-circle success">✓</div>
-        <h1 id="success-title" class="state-title">Email Verified!</h1>
-        <p id="success-body" class="state-body">Your email has been confirmed. Open the app and sign in to continue.</p>
-        <a id="btn-open" class="btn-open" href="where2go://login-callback">Open Where2Go</a>
-        <p class="helper-text">If the app does not open, make sure Where2Go is installed and try the button above.</p>
+        <h1 id="success-title" class="state-title">E-posta Doğrulandı!</h1>
+        <p id="success-body" class="state-body">E-posta adresin onaylandı. Devam etmek için uygulamayı açıp giriş yap.</p>
+        <a id="btn-open" class="btn-open" href="where2go://login-callback">Where2Go'yu Aç</a>
+        <p class="helper-text">Uygulama açılmıyorsa Where2Go'nun yüklü olduğundan emin ol ve yukarıdaki düğmeyi tekrar dene.</p>
       </div>
 
       <!-- State 3: Error -->
       <div id="state-error" class="state state-error">
         <div class="icon-circle error">✕</div>
-        <h1 class="state-title">Link Expired</h1>
-        <p class="state-body">This link is invalid or has already been used. Open the app to request a new one.</p>
-        <a class="btn-open" href="where2go://login-callback">Open Where2Go</a>
+        <h1 class="state-title">Bağlantı Süresi Doldu</h1>
+        <p class="state-body">Bu bağlantı geçersiz ya da daha önce kullanılmış. Yeni bir bağlantı almak için uygulamayı aç.</p>
+        <a class="btn-open" href="where2go://login-callback">Where2Go'yu Aç</a>
       </div>
 
       <div class="footer">© 2026 Where2Go — aeydevstudio.me</div>
@@ -286,15 +286,15 @@
       // --- 6. Set button href ---
       btnOpen.href = deepLinkUrl;
 
-      // --- 7. Determine type and customize messaging ---
-      var type = allParams.get('type');
+      // --- 7. Determine flow type and customize messaging ---
+      var isRecovery = allParams.get('flow') === 'recovery' || allParams.get('type') === 'recovery' || hashParams.get('type') === 'recovery';
 
-      if (type === 'recovery') {
-        successTitle.textContent = 'Link Received!';
-        successBody.textContent = 'Open the app to set your new password.';
+      if (isRecovery) {
+        successTitle.textContent = 'Şifre Sıfırlama Hazır!';
+        successBody.textContent = 'Kimliğin doğrulandı. Yeni şifreni belirlemek için uygulamayı aç.';
       } else {
-        successTitle.textContent = 'Email Verified!';
-        successBody.textContent = 'Your email has been confirmed. Open the app and sign in to continue.';
+        successTitle.textContent = 'E-posta Doğrulandı!';
+        successBody.textContent = 'E-posta adresin onaylandı. Devam etmek için uygulamayı açıp giriş yap.';
       }
 
       // --- 8. Show loading and attempt to open app ---
